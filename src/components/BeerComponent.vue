@@ -1,12 +1,18 @@
 <template>
   <div class="beer-container">
-    <h2>{{ name }}</h2>
+    <div class="bc-text-wrapper">
+      <h2>{{ name }}</h2>
+      <p>{{ description }}</p>
+    </div>
     <img :src="image" />
   </div>
 </template>
 <script lang="ts" setup>
 const props = defineProps({
   name: {
+    type: String,
+  },
+  description: {
     type: String,
   },
   image: {
@@ -16,7 +22,7 @@ const props = defineProps({
 </script>
 <style lang="scss" scoped>
 .beer-container {
-  height: 200px;
+  height: auto;
   width: 500px;
   box-sizing: border-box;
   padding: 10px;
@@ -25,11 +31,13 @@ const props = defineProps({
   border-radius: 8px;
   margin: 10px;
 
-  h2 {
+  .bc-text-wrapper {
     width: 50%;
   }
 
   img {
+    align-self: center;
+    max-height: 200px;
     flex: 1;
     object-fit: contain;
   }

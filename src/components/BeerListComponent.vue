@@ -3,7 +3,7 @@
   <div class="beers-container" ref="beerList">
     <h1 v-if="!show">Loading...</h1>
     <template v-for="(beer, index) in beers" :key="index">
-      <BeerComponent :name="beer.name" :image="beer.image_url" />
+      <BeerComponent :name="beer.name" :image="beer.image_url" :description="beer.description" />
     </template>
   </div>
 </template>
