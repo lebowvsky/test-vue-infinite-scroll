@@ -1,3 +1,3 @@
 <template>
-  <h1>Loading...</h1>
+  <h1>Insiiiide Loading...</h1>
 </template>
