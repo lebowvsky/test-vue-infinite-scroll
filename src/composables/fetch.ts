@@ -25,21 +25,19 @@ export const useFetchBeers = () => {
     await getBeers(pageIndex.value);
     pageIndex.value++;
   });
-  onMounted(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
 
-  onUnmounted(() => {
-    window.removeEventListener("scroll", handleScroll);
-  });
-
-  const beerList = ref();
-
-  const handleScroll = () => {
-    if (beerList.value.getBoundingClientRect().bottom < window.innerHeight) {
-      loadMorePost();
-    }
+  const getNextBeer = () => {
+    window.onscroll = () => {
+      const bottomOfWindow =
+        document.documentElement.scrollTop + window.innerHeight >= document.documentElement.offsetHeight;
+      if (bottomOfWindow) {
+        console.log(pageIndex.value);
+        loadMorePost();
+      }
+    };
   };
 
-  return { beers, beerList, show };
+  onMounted(() => getNextBeer());
+
+  return { beers, show, loadMorePost, pageIndex };
 };

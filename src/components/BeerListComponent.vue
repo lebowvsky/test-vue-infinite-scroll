@@ -1,7 +1,6 @@
 <template>
   <h1>List</h1>
   <div class="beers-container" ref="beerList">
-    <h1 v-if="!show">Loading...</h1>
     <template v-for="(beer, index) in beers" :key="index">
       <BeerComponent :name="beer.name" :image="beer.image_url" :description="beer.description" />
     </template>
@@ -15,7 +14,7 @@ const BeerComponent = defineAsyncComponent({
   loader: () => import("@/components/BeerComponent.vue"),
   loadingComponent: Loading,
 });
-const { beers, beerList, show } = useFetchBeers();
+const { beers } = useFetchBeers();
 </script>
 
 <style lang="scss" scoped>
@@ -26,5 +25,11 @@ const { beers, beerList, show } = useFetchBeers();
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.yoyo {
+  height: 120px;
+  margin: 10px;
+  background-color: aqua;
 }
 </style>
